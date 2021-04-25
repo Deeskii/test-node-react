@@ -1,17 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <nav className="navbar navbar-expand navbar-dark bg-dark">
+                    <a href="/peeps" className="navbar-brand">
+                        bezKoder
+                    </a>
+                    <div className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to={"/peeps"} className="nav-link">
+                                Tutorials
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/add"} className="nav-link">
+                                Add
+                            </Link>
+                        </li>
+                    </div>
+                </nav>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+                <div className="container mt-3">
+                    <Switch>
+                        <Route exact path={["/", "/peeps"]} component={TutorialsList} />
+                        <Route exact path="/add" component={AddTutorial} />
+                        <Route path="/peeps/:id" component={Tutorial} />
+                    </Switch>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default App;
