@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <a href="/peeps" className="navbar-brand">
-            bezKoder
+            Peeps 👀
           </a>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
