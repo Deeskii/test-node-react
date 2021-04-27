@@ -4,8 +4,16 @@ const cors = require("cors");
 const db = require('./models')
 const app = express();
 
+let whitelist = ['http://localhost:8081']
+
 var corsOptions = {
-  origin: "http://localhost:3000" || "https://localhost:8081"
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
 };
 
 app.use(cors(corsOptions));
